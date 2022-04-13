@@ -1,20 +1,26 @@
 {
-  "name": "qrsel",
+  "name": "telegram-qr-filter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.mjs",
+  "main": "telegram-qr-filter.mjs",
   "scripts": {
-    "start": "node .",
+    "start": "node . && say \"telegram qr filter task all done\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": "node .",
+  "bin": {
+    "telegram-qr-filter": "telegram-qr-filter.mjs"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "arg": "^5.0.1",
     "files": "^2.1.1",
     "jimp": "^0.16.1",
     "qrcode-reader": "^1.0.4",
     "yaml": "^2.0.0"
+  },
+  "devDependencies": {
+    "@snomiao/say": "^0.1.24"
   }
 }
