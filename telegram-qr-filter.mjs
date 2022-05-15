@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { walk } from "files";
-import { readFile, writeFile } from "fs/promises";
+import { copyFile, readFile, writeFile } from "fs/promises";
 import jimp from "jimp";
 import { basename, resolve } from "path";
 import QrCode from "qrcode-reader";
@@ -52,9 +52,12 @@ async function imgFileQrCodeParse(fn) {
   const fnBasename = basename(fn);
   if (value) {
     console.log("done", fnBasename, value?.result);
-    await img.writeAsync(outdir + "/" + fnBasename);
+    //
+    // await img.writeAsync(outdir + "/" + fnBasename);
+    // use copyfile to keep filedate and original size
+    await copyFile(fn, outdir + "/" + fnBasename);
   } else {
-    console.log("fail", fnBasename);
+    // console.log("fail", fnBasename);
   }
   // console.log(fn, value);
   return value;
